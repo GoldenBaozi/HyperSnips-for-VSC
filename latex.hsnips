@@ -48,7 +48,7 @@ function tes_matrix(nrow, ncol,t) {
 	return results;
 }
 
-// 输出一个表格
+// create table
 function createTable(rows, cols) {
     let ret = "";
     let order = 1;
@@ -70,7 +70,6 @@ endglobal
 
 
 # == Fraction Match ==
-
 
 snippet // "Fraction" iAm
 \\frac{${1:${VISUAL}}}{$2}$0
@@ -158,7 +157,7 @@ snippet R+ "R0+" iAm
 R_0^+
 endsnippet
 
-snippet pow "power" iAm
+snippet pw "power" iAm
 ^{${1:2}}$0
 endsnippet
 
@@ -172,7 +171,7 @@ endsnippet
 
 # == Subscript Operation ==
 
-snippet td "subscript" iAm
+snippet _ "subscript" iAm
 _{${1}}$0
 endsnippet
 
@@ -207,7 +206,7 @@ snippet `\b(?<!\\)([A-Za-z}])S([a-z])\2` "auto subscript 2" iAm
 endsnippet
 
 # Custom: Add more greek letters
-snippet `(\\mu|\\alpha|\\sigma|\\rho|\\beta|\\gamma|\\delta|\\zeta|\\eta|\\varepsilon|\\epsilon|\\theta|\\iota|\\kappa|\\vartheta|\\lambda|\\nu|\\pi|\\rho|\\tau|\\upsilon|\\phi|\\chi|\\psi|\\omega|\\Gamma|\\Delta|\\Theta|\\Lambda|\\Xi|\\Pi|\\Sigma|\\Upsilon|\\Phi|\\Psi|\\Omega)([a-z])\2` "auto subscript for greek letter" iAm
+snippet `(\\mu|\\alpha|\\sigma|\\rho|\\beta|\\gamma|\\delta|\\zeta|\\eta|\\varepsilon|\\epsilon|\\theta|\\iota|\\kappa|\\vartheta|\\lambda|\\nu|\\pi|\\rho|\\tau|\\upsilon|\\phi|\\chi|\\psi|\\xi|\\omega|\\Gamma|\\Delta|\\Theta|\\Lambda|\\Xi|\\Pi|\\Sigma|\\Upsilon|\\Phi|\\Psi|\\Omega)([a-z])\2` "auto subscript for greek letter" iAm
 `` rv = m[1] + "_" + m[2].substring(0, 1) ``
 endsnippet
 
@@ -219,6 +218,13 @@ endsnippet
 # == Font Operation ==
 
 # ==== Static Operation ====
+snippet trm "text rm" iAm
+\textrm{$1}$0
+endsnippet
+
+snippet tld "tilde" iAm
+\tilde{$1}$0
+endsnippet
 
 snippet txt "text" iAm
 \text{$1}$0
@@ -301,8 +307,8 @@ snippet 1bm "1bm" iAm
 endsnippet
 
 priority 100
-snippet `(\\?[a-zA-Z]\w*({?\w*})?)(bs)` "boldsymbol" iAm
-\boldsymbol{``rv = m[1]``}
+snippet `(\\?[a-zA-Z]\w*({?\w*})?)(bs)` "symbf" iAm
+\symbf{``rv = m[1]``}
 endsnippet
 
 priority 100
@@ -604,7 +610,7 @@ endsnippet
 
 # ==== Auto Math Mode ====
 
-snippet lm "inline Math" wA
+snippet mk "inline Math" wA
 $${1}$$0
 endsnippet
 
@@ -632,10 +638,16 @@ snippet case "cases" iAm
 \begin{cases} $1, & $2 \\\\ $3, & $4 \end{cases}
 endsnippet
 
-snippet ali "aligned" iAm
+snippet bald "aligned" iAm
 \begin{aligned}
 $1 \\\\
 \end{aligned}
+endsnippet
+
+snippet bals "align*" iAm
+\begin{align*}
+$1 \\\\
+\end{align*}
 endsnippet
 
 # == Auto Adaptive Close ==
